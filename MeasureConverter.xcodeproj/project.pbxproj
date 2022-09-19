@@ -9,21 +9,35 @@
 /* Begin PBXBuildFile section */
 		B204E84128C12B7B008E56FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E84028C12B7B008E56FA /* AppDelegate.swift */; };
 		B204E84328C12B7B008E56FA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E84228C12B7B008E56FA /* SceneDelegate.swift */; };
-		B204E84528C12B7B008E56FA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E84428C12B7B008E56FA /* ViewController.swift */; };
 		B204E84828C12B7B008E56FA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B204E84628C12B7B008E56FA /* Main.storyboard */; };
 		B204E84A28C12B7E008E56FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B204E84928C12B7E008E56FA /* Assets.xcassets */; };
 		B204E84D28C12B7E008E56FA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B204E84B28C12B7E008E56FA /* LaunchScreen.storyboard */; };
+		B204E85828C139FA008E56FA /* MeasurementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E85728C139FA008E56FA /* MeasurementModel.swift */; };
+		B204E85A28C13A7F008E56FA /* MeasurementVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E85928C13A7F008E56FA /* MeasurementVM.swift */; };
+		B204E85C28C1481A008E56FA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E85B28C1481A008E56FA /* HomeViewController.swift */; };
+		B204E85E28C2909F008E56FA /* MassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E85D28C2909F008E56FA /* MassViewController.swift */; };
+		B204E86028C290BA008E56FA /* LengthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E85F28C290BA008E56FA /* LengthViewController.swift */; };
+		B204E86228C290D1008E56FA /* VolumeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86128C290D1008E56FA /* VolumeViewController.swift */; };
+		B204E86428C290E3008E56FA /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86328C290E3008E56FA /* TemperatureViewController.swift */; };
+		B204E86728C7A80B008E56FA /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86628C7A80B008E56FA /* Storyboardable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B204E83D28C12B7B008E56FA /* MeasureConverter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeasureConverter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B204E84028C12B7B008E56FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B204E84228C12B7B008E56FA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B204E84428C12B7B008E56FA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B204E84728C12B7B008E56FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B204E84928C12B7E008E56FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B204E84C28C12B7E008E56FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B204E84E28C12B7E008E56FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B204E85728C139FA008E56FA /* MeasurementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementModel.swift; sourceTree = "<group>"; };
+		B204E85928C13A7F008E56FA /* MeasurementVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementVM.swift; sourceTree = "<group>"; };
+		B204E85B28C1481A008E56FA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B204E85D28C2909F008E56FA /* MassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MassViewController.swift; sourceTree = "<group>"; };
+		B204E85F28C290BA008E56FA /* LengthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthViewController.swift; sourceTree = "<group>"; };
+		B204E86128C290D1008E56FA /* VolumeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeViewController.swift; sourceTree = "<group>"; };
+		B204E86328C290E3008E56FA /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		B204E86628C7A80B008E56FA /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +54,8 @@
 		B204E83428C12B7B008E56FA = {
 			isa = PBXGroup;
 			children = (
+				B204E84028C12B7B008E56FA /* AppDelegate.swift */,
+				B204E84228C12B7B008E56FA /* SceneDelegate.swift */,
 				B204E83F28C12B7B008E56FA /* MeasureConverter */,
 				B204E83E28C12B7B008E56FA /* Products */,
 			);
@@ -56,15 +72,52 @@
 		B204E83F28C12B7B008E56FA /* MeasureConverter */ = {
 			isa = PBXGroup;
 			children = (
-				B204E84028C12B7B008E56FA /* AppDelegate.swift */,
-				B204E84228C12B7B008E56FA /* SceneDelegate.swift */,
-				B204E84428C12B7B008E56FA /* ViewController.swift */,
+				B204E86528C29FEA008E56FA /* Helper */,
+				B204E85428C12B88008E56FA /* Model */,
+				B204E85528C12B91008E56FA /* View */,
+				B204E85628C12BA2008E56FA /* ViewModel */,
 				B204E84628C12B7B008E56FA /* Main.storyboard */,
 				B204E84928C12B7E008E56FA /* Assets.xcassets */,
 				B204E84B28C12B7E008E56FA /* LaunchScreen.storyboard */,
 				B204E84E28C12B7E008E56FA /* Info.plist */,
 			);
 			path = MeasureConverter;
+			sourceTree = "<group>";
+		};
+		B204E85428C12B88008E56FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B204E85728C139FA008E56FA /* MeasurementModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B204E85528C12B91008E56FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B204E85B28C1481A008E56FA /* HomeViewController.swift */,
+				B204E85D28C2909F008E56FA /* MassViewController.swift */,
+				B204E85F28C290BA008E56FA /* LengthViewController.swift */,
+				B204E86128C290D1008E56FA /* VolumeViewController.swift */,
+				B204E86328C290E3008E56FA /* TemperatureViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B204E85628C12BA2008E56FA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B204E85928C13A7F008E56FA /* MeasurementVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B204E86528C29FEA008E56FA /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				B204E86628C7A80B008E56FA /* Storyboardable.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +191,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B204E84528C12B7B008E56FA /* ViewController.swift in Sources */,
+				B204E85828C139FA008E56FA /* MeasurementModel.swift in Sources */,
 				B204E84128C12B7B008E56FA /* AppDelegate.swift in Sources */,
+				B204E85E28C2909F008E56FA /* MassViewController.swift in Sources */,
+				B204E85A28C13A7F008E56FA /* MeasurementVM.swift in Sources */,
+				B204E86228C290D1008E56FA /* VolumeViewController.swift in Sources */,
+				B204E86028C290BA008E56FA /* LengthViewController.swift in Sources */,
 				B204E84328C12B7B008E56FA /* SceneDelegate.swift in Sources */,
+				B204E85C28C1481A008E56FA /* HomeViewController.swift in Sources */,
+				B204E86728C7A80B008E56FA /* Storyboardable.swift in Sources */,
+				B204E86428C290E3008E56FA /* TemperatureViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
