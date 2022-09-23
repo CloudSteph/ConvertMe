@@ -8,20 +8,14 @@
 import Foundation
 import UIKit
 
-extension Double {
-    func unitLengthFormat() -> String {
-        return String(format: "%.2F", self)
-    }
-}
-
 final class LengthViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputLengthTextField: UITextField!
     @IBOutlet private(set) weak var inchLabel: UILabel!
     @IBOutlet private(set) weak var centimeterLabel: UILabel!
     @IBOutlet private(set) weak var feetLabel: UILabel!
     @IBOutlet private(set) weak var yardLabel: UILabel!
-    
-    var lengthConversion: LengthType = .inch
+
+    private var lengthViewModel: LengthVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,65 +40,42 @@ extension LengthViewController {
         guard let unwrappedLengthInput = inputLengthTextField.text,
               let lengthValue = Double(unwrappedLengthInput) else {return}
         
-        switch lengthConversion {
-        case .inch: startLengthConversions(from: lengthValue, from: .inch)
-        case .centimeter: startLengthConversions(from: lengthValue, from: .centimeter)
-        case .feet: startLengthConversions(from: lengthValue, from: .feet)
-        case .yard: startLengthConversions(from: lengthValue, from: .yard)
+        switch lengthViewModel.lengthConversion {
+        case .inch: lengthViewModel.refreshLengthData(from: lengthValue, from: .inch)
+        case .centimeter: lengthViewModel.refreshLengthData(from: lengthValue, from: .centimeter)
+        case .feet: lengthViewModel.refreshLengthData(from: lengthValue, from: .feet)
+        case .yard: lengthViewModel.refreshLengthData(from: lengthValue, from: .yard)
         }
+        updateLengthLabels()
     }
     
     @IBAction func inputLengthTypeSelected(sender: UISegmentedControl) {
         guard let lengthType = LengthType(rawValue: sender.selectedSegmentIndex) else {
-            self.lengthConversion = .inch
+            self.lengthViewModel.lengthConversion = .inch
             return
         }
-        self.lengthConversion = lengthType
+        self.lengthViewModel.lengthConversion = lengthType
         
         guard let unwrappedLengthInput = inputLengthTextField.text,
               let lengthValue = Double(unwrappedLengthInput) else {return}
         
-        switch lengthConversion {
-        case .inch: startLengthConversions(from: lengthValue, from: .inch)
-        case .centimeter: startLengthConversions(from: lengthValue, from: .centimeter)
-        case .feet: startLengthConversions(from: lengthValue, from: .feet)
-        case .yard: startLengthConversions(from: lengthValue, from: .yard)
+        switch lengthViewModel.lengthConversion {
+        case .inch: lengthViewModel.refreshLengthData(from: lengthValue, from: .inch)
+        case .centimeter: lengthViewModel.refreshLengthData(from: lengthValue, from: .centimeter)
+        case .feet: lengthViewModel.refreshLengthData(from: lengthValue, from: .feet)
+        case .yard: lengthViewModel.refreshLengthData(from: lengthValue, from: .yard)
         }
+        updateLengthLabels()
     }
 }
 
 // MARK: - Length Helper Methods
 extension LengthViewController {
-    func startLengthConversions(from lengthValue: Double, from lengthType: LengthType) {
-        switch lengthType {
-        case .inch:
-            let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.inches)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
-            
-        case .centimeter:
-            let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.centimeters)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
-            
-        case .feet:
-            let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.feet)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
-            
-        case .yard:
-            let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.yards)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
-        }
+    func updateLengthLabels() {
+        inchLabel.text = lengthViewModel.inch
+        centimeterLabel.text = lengthViewModel.centimeter
+        feetLabel.text = lengthViewModel.foot
+        yardLabel.text = lengthViewModel.yard
     }
 }
 
@@ -116,11 +87,11 @@ inch to centimeter
 1in = 2.54cm
 Mulitply by 2.54
  
-inch to yard
-1in = 0.0277778
-Divide by 36
- 
 inch to foot
 1in = 0.0833333
 Divide by 12
+ 
+ inch to yard
+ 1in = 0.0277778
+ Divide by 36
 */
