@@ -8,13 +8,18 @@
 import Foundation
 import UIKit
 
+extension Double {
+    func unitTempFormat() -> String {
+        return String(format: "%.0F", self)
+    }
+}
+
 final class TemperatureViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputTempTextField: UITextField!
     @IBOutlet private(set) weak var celsiusLabel: UILabel!
     @IBOutlet private(set) weak var fahrenheitLabel: UILabel!
     
     private var tempConversion: TempType = .celsius
-    private var viewModel: MeasurementVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,12 +71,12 @@ extension TemperatureViewController {
         switch tempType {
         case .celsius:
             let tempConverter = Measurement(value: tempValue, unit: UnitTemperature.celsius)
-            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitFormat()
-            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitFormat()
+            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitTempFormat()
+            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitTempFormat()
         case .fahrenheit:
             let tempConverter = Measurement(value: tempValue, unit: UnitTemperature.fahrenheit)
-            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitFormat()
-            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitFormat()
+            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitTempFormat()
+            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitTempFormat()
         }
     }
 }

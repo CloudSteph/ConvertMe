@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+extension Double {
+    func unitLengthFormat() -> String {
+        return String(format: "%.2F", self)
+    }
+}
+
 final class LengthViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputLengthTextField: UITextField!
     @IBOutlet private(set) weak var inchLabel: UILabel!
@@ -15,9 +21,7 @@ final class LengthViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var feetLabel: UILabel!
     @IBOutlet private(set) weak var yardLabel: UILabel!
     
-    
-    private var lengthConversion: LengthType = .inch
-    private var viewModel: MeasurementVM = .init()
+    var lengthConversion: LengthType = .inch
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,31 +79,31 @@ extension LengthViewController {
         switch lengthType {
         case .inch:
             let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.inches)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitFormat()
+            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
+            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
+            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
+            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
             
         case .centimeter:
             let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.centimeters)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitFormat()
+            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
+            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
+            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
+            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
             
         case .feet:
             let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.feet)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitFormat()
+            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
+            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
+            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
+            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
             
         case .yard:
             let lengthConverter = Measurement(value: lengthValue, unit: UnitLength.yards)
-            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitFormat()
-            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitFormat()
-            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitFormat()
-            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitFormat()
+            self.inchLabel.text = lengthConverter.converted(to: UnitLength.inches).value.unitLengthFormat()
+            self.centimeterLabel.text = lengthConverter.converted(to: UnitLength.centimeters).value.unitLengthFormat()
+            self.feetLabel.text = lengthConverter.converted(to: UnitLength.feet).value.unitLengthFormat()
+            self.yardLabel.text = lengthConverter.converted(to: UnitLength.yards).value.unitLengthFormat()
         }
     }
 }

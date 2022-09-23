@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+extension Double {
+    func unitVolumeFormat() -> String {
+        return String(format: "%.2F", self)
+    }
+}
+
 final class VolumeViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputVolumeTextField: UITextField!
     @IBOutlet private(set) weak var cupLabel: UILabel!
@@ -17,7 +23,6 @@ final class VolumeViewController: UIViewController, Storyboardable {
    
     
     private var volumeConversion: VolumeType = .cup
-    private var viewModel: MeasurementVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,28 +78,28 @@ extension VolumeViewController {
         switch volumeType {
         case .cup:
             let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.cups)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitFormat()
+            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
+            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
+            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
+            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
         case .tablespoon:
             let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.tablespoons)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitFormat()
+            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
+            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
+            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
+            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
         case .teaspoon:
             let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.teaspoons)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitFormat()
+            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
+            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
+            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
+            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
         case .fluidOunce:
             let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.fluidOunces)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitFormat()
+            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
+            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
+            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
+            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
         }
     }
 }

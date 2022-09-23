@@ -117,7 +117,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unit Converter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uND-lF-0T8">
-                                        <rect key="frame" x="75" y="52" width="264" height="39"/>
+                                        <rect key="frame" x="75" y="52" width="233.5" height="39"/>
                                         <fontDescription key="fontDescription" name="Futura-Bold" family="Futura" pointSize="30"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -125,7 +125,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="uND-lF-0T8" secondAttribute="trailing" constant="75" id="2ns-Xo-LdL"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uND-lF-0T8" secondAttribute="trailing" constant="20" symbolic="YES" id="2ns-Xo-LdL"/>
                                     <constraint firstAttribute="trailing" secondItem="1X3-KP-zYz" secondAttribute="trailing" constant="67" id="Dni-Ph-EE4"/>
                                     <constraint firstItem="uND-lF-0T8" firstAttribute="leading" secondItem="XSy-9Q-CAp" secondAttribute="leading" constant="75" id="RMC-8o-kvw"/>
                                     <constraint firstItem="uND-lF-0T8" firstAttribute="top" secondItem="XSy-9Q-CAp" secondAttribute="top" constant="52" id="Wox-hY-ZIh"/>
@@ -378,7 +378,7 @@
                                                 <segments>
                                                     <segment title="Inch"/>
                                                     <segment title="Centimeter"/>
-                                                    <segment title="Foot"/>
+                                                    <segment title="Feet"/>
                                                     <segment title="Yard"/>
                                                 </segments>
                                                 <connections>

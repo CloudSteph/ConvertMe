@@ -15,8 +15,7 @@ final class MassViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var ounceLabel: UILabel!
     @IBOutlet private(set) weak var poundLabel: UILabel!
     
-    private var viewModel: MeasurementVM = .init()
-    private var massConversion: MassType = .kilogram
+    private var massViewModel: MassVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,44 +39,23 @@ extension MassViewController {
         guard let unwrappedInput = inputMassTextField.text,
               let value = Double(unwrappedInput) else { return }
         
-        switch massConversion {
-        case .kilogram: startMassConversions(from: value, from: .kilogram)
-        case .gram: startMassConversions(from: value, from: .gram)
-        case .ounce: startMassConversions(from: value, from: .ounce)
-        case .pound: startMassConversions(from: value, from: .pound)
+        switch massViewModel.massConversion {
+        case .kilogram: massViewModel.refreshMassData(from: value, from: .kilogram)
+        case .gram: massViewModel.refreshMassData(from: value, from: .gram)
+        case .ounce: massViewModel.refreshMassData(from: value, from: .ounce)
+        case .pound: massViewModel.refreshMassData(from: value, from: .pound)
         }
+        updateMassLabels()
     }
 }
 
-// MARK: - Helper Methods
+// Mark: - Update Labels
 extension MassViewController {
-    func startMassConversions(from value: Double, from massType: MassType) {
-        switch massType {
-        case .kilogram:
-            let converter = Measurement(value: value, unit: UnitMass.kilograms)
-            self.kilogramLabel.text = converter.converted(to: .kilograms).value.unitFormat()
-            self.gramLabel.text = converter.converted(to: .grams).value.unitFormat()
-            self.ounceLabel.text = converter.converted(to: .ounces).value.unitFormat()
-            self.poundLabel.text = converter.converted(to: .pounds).value.unitFormat()
-        case .gram:
-            let converter = Measurement(value: value, unit: UnitMass.grams)
-            self.kilogramLabel.text = converter.converted(to: .kilograms).value.unitFormat()
-            self.gramLabel.text = converter.converted(to: .grams).value.unitFormat()
-            self.ounceLabel.text = converter.converted(to: .ounces).value.unitFormat()
-            self.poundLabel.text = converter.converted(to: .pounds).value.unitFormat()
-        case .ounce:
-            let converter = Measurement(value: value, unit: UnitMass.ounces)
-            self.kilogramLabel.text = converter.converted(to: .kilograms).value.unitFormat()
-            self.gramLabel.text = converter.converted(to: .grams).value.unitFormat()
-            self.ounceLabel.text = converter.converted(to: .ounces).value.unitFormat()
-            self.poundLabel.text = converter.converted(to: .pounds).value.unitFormat()
-        case .pound:
-            let converter = Measurement(value: value, unit: UnitMass.pounds)
-            self.kilogramLabel.text = converter.converted(to: .kilograms).value.unitFormat()
-            self.gramLabel.text = converter.converted(to: .grams).value.unitFormat()
-            self.ounceLabel.text = converter.converted(to: .ounces).value.unitFormat()
-            self.poundLabel.text = converter.converted(to: .pounds).value.unitFormat()
-        }
+    func updateMassLabels() {
+        kilogramLabel.text = massViewModel.kilogram
+        gramLabel.text = massViewModel.gram
+        ounceLabel.text = massViewModel.ounce
+        poundLabel.text = massViewModel.pound
     }
 }
 
@@ -85,24 +63,23 @@ extension MassViewController {
 extension MassViewController {
     @IBAction func inputMassTypeSelected(sender: UISegmentedControl) {
         guard let massType = MassType(rawValue: sender.selectedSegmentIndex) else {
-            self.massConversion = .kilogram
+            self.massViewModel.massConversion = .kilogram
             return
         }
-        self.massConversion = massType
+        self.massViewModel.massConversion = massType
         
         guard let unwrappedInput = inputMassTextField.text,
               let value = Double(unwrappedInput) else { return }
         
-        switch massConversion {
-        case .kilogram: startMassConversions(from: value, from: .kilogram)
-        case .gram: startMassConversions(from: value, from: .gram)
-        case .ounce: startMassConversions(from: value, from: .ounce)
-        case .pound: startMassConversions(from: value, from: .pound)
+        switch massViewModel.massConversion {
+        case .kilogram: massViewModel.refreshMassData(from: value, from: .kilogram)
+        case .gram: massViewModel.refreshMassData(from: value, from: .gram)
+        case .ounce: massViewModel.refreshMassData(from: value, from: .ounce)
+        case .pound: massViewModel.refreshMassData(from: value, from: .pound)
         }
+        updateMassLabels()
     }
-    
 }
-
 
 /*
 Kilogram to Kilogram
