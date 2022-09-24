@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-extension Double {
-    func unitVolumeFormat() -> String {
-        return String(format: "%.2F", self)
-    }
-}
-
 final class VolumeViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputVolumeTextField: UITextField!
     @IBOutlet private(set) weak var cupLabel: UILabel!
@@ -21,8 +15,7 @@ final class VolumeViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var teaspoonLabel: UILabel!
     @IBOutlet private(set) weak var fluidOunceLabel: UILabel!
    
-    
-    private var volumeConversion: VolumeType = .cup
+    private var volumeViewModel: VolumeVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,65 +35,46 @@ final class VolumeViewController: UIViewController, Storyboardable {
 // MARK: - Actions
 extension VolumeViewController {
     @objc private func doneSelected(sender: Any) {
+        self.inputVolumeTextField.resignFirstResponder()
         guard let unwrappedInputVolume = inputVolumeTextField.text,
         let volumeValue = Double(unwrappedInputVolume) else {return}
         
-        switch volumeConversion {
-        case .cup: startVolumeConversions(from: volumeValue, from: .cup)
-        case .tablespoon: startVolumeConversions(from: volumeValue, from: .tablespoon)
-        case .teaspoon: startVolumeConversions(from: volumeValue, from: .teaspoon)
-        case .fluidOunce: startVolumeConversions(from: volumeValue, from: .fluidOunce)
+        switch volumeViewModel.volumeConversion {
+        case .cup: volumeViewModel.refreshVolumeData(from: volumeValue, from: .cup)
+        case .tablespoon: volumeViewModel.refreshVolumeData(from: volumeValue, from: .tablespoon)
+        case .teaspoon: volumeViewModel.refreshVolumeData(from: volumeValue, from: .teaspoon)
+        case .fluidOunce: volumeViewModel.refreshVolumeData(from: volumeValue, from: .fluidOunce)
         }
+        updateVolumeLabels()
     }
     
     @IBAction func inputVolumeTypeSelected(sender: UISegmentedControl) {
         guard let volumeType = VolumeType(rawValue: sender.selectedSegmentIndex) else {
-            self.volumeConversion = .cup
+            self.volumeViewModel.volumeConversion = .cup
             return
         }
-        self.volumeConversion = volumeType
+        self.volumeViewModel.volumeConversion = volumeType
         
         guard let unwrapInputVolume = inputVolumeTextField.text,
         let volumeValue = Double(unwrapInputVolume) else {return}
         
-        switch volumeConversion {
-        case .cup: startVolumeConversions(from: volumeValue, from: .cup)
-        case .tablespoon: startVolumeConversions(from: volumeValue, from: .tablespoon)
-        case .teaspoon: startVolumeConversions(from: volumeValue, from: .teaspoon)
-        case .fluidOunce: startVolumeConversions(from: volumeValue, from: .fluidOunce)
+        switch volumeViewModel.volumeConversion {
+        case .cup: volumeViewModel.refreshVolumeData(from: volumeValue, from: .cup)
+        case .tablespoon: volumeViewModel.refreshVolumeData(from: volumeValue, from: .tablespoon)
+        case .teaspoon: volumeViewModel.refreshVolumeData(from: volumeValue, from: .teaspoon)
+        case .fluidOunce: volumeViewModel.refreshVolumeData(from: volumeValue, from: .fluidOunce)
         }
+        updateVolumeLabels()
     }
 }
 
 // MARK: Volume Helper Methods
 extension VolumeViewController {
-    func startVolumeConversions(from volumeValue: Double, from volumeType: VolumeType) {
-        switch volumeType {
-        case .cup:
-            let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.cups)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
-        case .tablespoon:
-            let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.tablespoons)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
-        case .teaspoon:
-            let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.teaspoons)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
-        case .fluidOunce:
-            let volumeConverter = Measurement(value: volumeValue, unit: UnitVolume.fluidOunces)
-            self.cupLabel.text = volumeConverter.converted(to: UnitVolume.cups).value.unitVolumeFormat()
-            self.tablespoonLabel.text = volumeConverter.converted(to: UnitVolume.tablespoons).value.unitVolumeFormat()
-            self.teaspoonLabel.text = volumeConverter.converted(to: UnitVolume.teaspoons).value.unitVolumeFormat()
-            self.fluidOunceLabel.text = volumeConverter.converted(to: UnitVolume.fluidOunces).value.unitVolumeFormat()
-        }
+    func updateVolumeLabels() {
+        cupLabel.text = volumeViewModel.cup
+        tablespoonLabel.text = volumeViewModel.tablespoon
+        teaspoonLabel.text = volumeViewModel.teaspoon
+        fluidOunceLabel.text = volumeViewModel.fluidOunce
     }
 }
 

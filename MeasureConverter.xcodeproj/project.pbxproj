@@ -21,6 +21,7 @@
 		B204E86428C290E3008E56FA /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86328C290E3008E56FA /* TemperatureViewController.swift */; };
 		B204E86728C7A80B008E56FA /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86628C7A80B008E56FA /* Storyboardable.swift */; };
 		B2990ECC28DE323D00C5F4DA /* LengthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2990ECB28DE323D00C5F4DA /* LengthVM.swift */; };
+		B2990ECE28DE92B000C5F4DA /* VolumeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		B204E86328C290E3008E56FA /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		B204E86628C7A80B008E56FA /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		B2990ECB28DE323D00C5F4DA /* LengthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthVM.swift; sourceTree = "<group>"; };
+		B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				B204E85928C13A7F008E56FA /* MassVM.swift */,
 				B2990ECB28DE323D00C5F4DA /* LengthVM.swift */,
+				B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				B204E86228C290D1008E56FA /* VolumeViewController.swift in Sources */,
 				B204E86028C290BA008E56FA /* LengthViewController.swift in Sources */,
 				B204E84328C12B7B008E56FA /* SceneDelegate.swift in Sources */,
+				B2990ECE28DE92B000C5F4DA /* VolumeVM.swift in Sources */,
 				B204E85C28C1481A008E56FA /* HomeViewController.swift in Sources */,
 				B204E86728C7A80B008E56FA /* Storyboardable.swift in Sources */,
 				B204E86428C290E3008E56FA /* TemperatureViewController.swift in Sources */,
