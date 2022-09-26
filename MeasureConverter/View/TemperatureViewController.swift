@@ -8,18 +8,12 @@
 import Foundation
 import UIKit
 
-extension Double {
-    func unitTempFormat() -> String {
-        return String(format: "%.0F", self)
-    }
-}
-
 final class TemperatureViewController: UIViewController, Storyboardable {
     @IBOutlet private(set) weak var inputTempTextField: UITextField!
     @IBOutlet private(set) weak var celsiusLabel: UILabel!
     @IBOutlet private(set) weak var fahrenheitLabel: UILabel!
     
-    private var tempConversion: TempType = .celsius
+    private var tempViewModel: TemperatureVM = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,45 +33,40 @@ final class TemperatureViewController: UIViewController, Storyboardable {
 // MARK: - Actions
 extension TemperatureViewController {
     @objc private func donePerformed(sender: Any) {
+        self.inputTempTextField.resignFirstResponder()
         guard let unwrappedInputTemp = inputTempTextField.text,
               let tempValue = Double(unwrappedInputTemp) else {return}
         
-        switch tempConversion {
-        case .celsius: startTempConversions(from: tempValue, from: .celsius)
-        case .fahrenheit: startTempConversions(from: tempValue, from: .fahrenheit)
+        switch tempViewModel.tempConversion {
+        case .celsius: tempViewModel.refreshTempData(from: tempValue, from: .celsius)
+        case .fahrenheit: tempViewModel.refreshTempData(from: tempValue, from: .fahrenheit)
         }
+        updateTempLabels()
     }
     
     @IBAction func tempTypeSelected(sender: UISegmentedControl) {
         guard let tempType = TempType(rawValue: sender.selectedSegmentIndex) else {
-            self.tempConversion = .celsius
+            self.tempViewModel.tempConversion = .celsius
             return
         }
-        self.tempConversion = tempType
+        self.tempViewModel.tempConversion = tempType
         
         guard let unwrappedInputTemp = inputTempTextField.text,
               let tempValue = Double(unwrappedInputTemp) else {return}
         
-        switch tempConversion {
-        case .celsius: startTempConversions(from: tempValue, from: .celsius)
-        case .fahrenheit: startTempConversions(from: tempValue, from: .fahrenheit)
+        switch tempViewModel.tempConversion {
+        case .celsius: tempViewModel.refreshTempData(from: tempValue, from: .celsius)
+        case .fahrenheit: tempViewModel.refreshTempData(from: tempValue, from: .fahrenheit)
         }
+        updateTempLabels()
     }
 }
 
 // MARK: - Temp Helper Method
 extension TemperatureViewController {
-    func startTempConversions(from tempValue: Double, from tempType: TempType) {
-        switch tempType {
-        case .celsius:
-            let tempConverter = Measurement(value: tempValue, unit: UnitTemperature.celsius)
-            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitTempFormat()
-            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitTempFormat()
-        case .fahrenheit:
-            let tempConverter = Measurement(value: tempValue, unit: UnitTemperature.fahrenheit)
-            self.celsiusLabel.text = tempConverter.converted(to: UnitTemperature.celsius).value.unitTempFormat()
-            self.fahrenheitLabel.text = tempConverter.converted(to: UnitTemperature.fahrenheit).value.unitTempFormat()
-        }
+    func updateTempLabels() {
+        celsiusLabel.text = tempViewModel.celsius
+        fahrenheitLabel.text = tempViewModel.fahrenheit
     }
 }
 

@@ -22,6 +22,7 @@
 		B204E86728C7A80B008E56FA /* Storyboardable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B204E86628C7A80B008E56FA /* Storyboardable.swift */; };
 		B2990ECC28DE323D00C5F4DA /* LengthVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2990ECB28DE323D00C5F4DA /* LengthVM.swift */; };
 		B2990ECE28DE92B000C5F4DA /* VolumeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */; };
+		B2990ED028E1E02100C5F4DA /* TemperatureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2990ECF28E1E02100C5F4DA /* TemperatureVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B204E86628C7A80B008E56FA /* Storyboardable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboardable.swift; sourceTree = "<group>"; };
 		B2990ECB28DE323D00C5F4DA /* LengthVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LengthVM.swift; sourceTree = "<group>"; };
 		B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeVM.swift; sourceTree = "<group>"; };
+		B2990ECF28E1E02100C5F4DA /* TemperatureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				B204E85928C13A7F008E56FA /* MassVM.swift */,
 				B2990ECB28DE323D00C5F4DA /* LengthVM.swift */,
 				B2990ECD28DE92B000C5F4DA /* VolumeVM.swift */,
+				B2990ECF28E1E02100C5F4DA /* TemperatureVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			files = (
 				B204E85828C139FA008E56FA /* MeasurementModel.swift in Sources */,
 				B2990ECC28DE323D00C5F4DA /* LengthVM.swift in Sources */,
+				B2990ED028E1E02100C5F4DA /* TemperatureVM.swift in Sources */,
 				B204E84128C12B7B008E56FA /* AppDelegate.swift in Sources */,
 				B204E85E28C2909F008E56FA /* MassViewController.swift in Sources */,
 				B204E85A28C13A7F008E56FA /* MassVM.swift in Sources */,
