@@ -9,19 +9,19 @@ import Foundation
 
 extension Double {
     func unitInchFormat() -> String {
-        return String(format: "%.2F", self) + "in"
+        return String(format: "%.2F", self) + " in"
     }
     
     func unitCentimeterFormat() -> String {
-        return String(format: "%.2F", self) + "cm"
+        return String(format: "%.2F", self) + " cm"
     }
     
     func unitFootFormat() -> String {
-        return String(format: "%.2F", self) + "ft"
+        return String(format: "%.2F", self) + " ft"
     }
     
     func unitYardFormat() -> String {
-        return String(format: "%.2F", self) + "yd"
+        return String(format: "%.2F", self) + " yd"
     }
 }
 

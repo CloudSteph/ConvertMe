@@ -9,19 +9,19 @@ import Foundation
 
 extension Double {
     func unitKilogramFormat() -> String {
-        return String(format: "%.2F", self) + "kg"
+        return String(format: "%.2F", self) + " kg"
     }
     
     func unitGramFormat() -> String {
-        return String(format: "%.2F", self) + "g"
+        return String(format: "%.2F", self) + " g"
     }
     
     func unitOunceFormat() -> String {
-        return String(format: "%.2F", self) + "oz"
+        return String(format: "%.2F", self) + " oz"
     }
     
     func unitPoundFormat() -> String {
-        return String(format: "%.2F", self) + "lb"
+        return String(format: "%.2F", self) + " lb"
     }
 }
 

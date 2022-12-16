@@ -9,19 +9,19 @@ import Foundation
 
 extension Double {
     func unitCupFormat() -> String {
-        return String(format: "%.2F", self) + "cup"
+        return String(format: "%.2F", self) + " cup"
     }
     
     func unitTablespoonFormat() -> String {
-        return String(format: "%.2F", self) + "tbsp"
+        return String(format: "%.2F", self) + " tbsp"
     }
     
     func unitTeaspoonFormat() -> String {
-        return String(format: "%.2F", self) + "tsp"
+        return String(format: "%.2F", self) + " tsp"
     }
     
     func unitFluidOunceFormat() -> String {
-        return String(format: "%.2F", self) + "fl oz"
+        return String(format: "%.2F", self) + " fl oz"
     }
 }
 
