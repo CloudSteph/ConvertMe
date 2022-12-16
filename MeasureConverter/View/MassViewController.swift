@@ -38,7 +38,6 @@ extension MassViewController {
         self.inputMassTextField.resignFirstResponder()
         guard let unwrappedInput = inputMassTextField.text,
               let value = Double(unwrappedInput) else { return }
-        
         switch massViewModel.massConversion {
         case .kilogram: massViewModel.refreshMassData(from: value, from: .kilogram)
         case .gram: massViewModel.refreshMassData(from: value, from: .gram)

@@ -8,8 +8,12 @@
 import Foundation
 
 extension Double {
-    func unitTempFormat() -> String {
-        return String(format: "%.0F", self)
+    func unitFarenheitFormat() -> String {
+        return String(format: "%.0F", self) + "°F"
+    }
+    
+    func unitCelsiusFormat() -> String {
+        return String(format: "%.0F", self) + "°C"
     }
 }
 
@@ -22,12 +26,12 @@ final class TemperatureVM {
         switch tempType {
         case .celsius:
             let converter = Measurement(value: tempValue, unit: UnitTemperature.celsius)
-            celsius = converter.converted(to: .celsius).value.unitTempFormat()
-            fahrenheit = converter.converted(to: .fahrenheit).value.unitTempFormat()
+            celsius = converter.converted(to: .celsius).value.unitFarenheitFormat()
+            fahrenheit = converter.converted(to: .fahrenheit).value.unitCelsiusFormat()
         case .fahrenheit:
             let converter = Measurement(value: tempValue, unit: UnitTemperature.fahrenheit)
-            celsius = converter.converted(to: .celsius).value.unitTempFormat()
-            fahrenheit = converter.converted(to: .fahrenheit).value.unitTempFormat()
+            celsius = converter.converted(to: .celsius).value.unitFarenheitFormat()
+            fahrenheit = converter.converted(to: .fahrenheit).value.unitCelsiusFormat()
         }
     }
 }

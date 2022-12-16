@@ -8,8 +8,20 @@
 import Foundation
 
 extension Double {
-    func unitVolumeFormat() -> String {
-        return String(format: "%.2F", self)
+    func unitCupFormat() -> String {
+        return String(format: "%.2F", self) + "cup"
+    }
+    
+    func unitTablespoonFormat() -> String {
+        return String(format: "%.2F", self) + "tbsp"
+    }
+    
+    func unitTeaspoonFormat() -> String {
+        return String(format: "%.2F", self) + "tsp"
+    }
+    
+    func unitFluidOunceFormat() -> String {
+        return String(format: "%.2F", self) + "fl oz"
     }
 }
 
@@ -24,28 +36,28 @@ final class VolumeVM {
         switch volumeType {
         case .cup:
             let converter = Measurement(value: volumeValue, unit: UnitVolume.cups)
-            cup = converter.converted(to: .cups).value.unitVolumeFormat()
-            tablespoon = converter.converted(to: .tablespoons).value.unitVolumeFormat()
-            teaspoon = converter.converted(to: .teaspoons).value.unitVolumeFormat()
-            fluidOunce = converter.converted(to: .fluidOunces).value.unitVolumeFormat()
+            cup = converter.converted(to: .cups).value.unitCupFormat()
+            tablespoon = converter.converted(to: .tablespoons).value.unitTablespoonFormat()
+            teaspoon = converter.converted(to: .teaspoons).value.unitTeaspoonFormat()
+            fluidOunce = converter.converted(to: .fluidOunces).value.unitFluidOunceFormat()
         case .tablespoon:
             let converter = Measurement(value: volumeValue, unit: UnitVolume.tablespoons)
-            cup = converter.converted(to: .cups).value.unitVolumeFormat()
-            tablespoon = converter.converted(to: .tablespoons).value.unitVolumeFormat()
-            teaspoon = converter.converted(to: .teaspoons).value.unitVolumeFormat()
-            fluidOunce = converter.converted(to: .fluidOunces).value.unitVolumeFormat()
+            cup = converter.converted(to: .cups).value.unitCupFormat()
+            tablespoon = converter.converted(to: .tablespoons).value.unitTablespoonFormat()
+            teaspoon = converter.converted(to: .teaspoons).value.unitTeaspoonFormat()
+            fluidOunce = converter.converted(to: .fluidOunces).value.unitFluidOunceFormat()
         case .teaspoon:
             let converter = Measurement(value: volumeValue, unit: UnitVolume.teaspoons)
-            cup = converter.converted(to: .cups).value.unitVolumeFormat()
-            tablespoon = converter.converted(to: .tablespoons).value.unitVolumeFormat()
-            teaspoon = converter.converted(to: .teaspoons).value.unitVolumeFormat()
-            fluidOunce = converter.converted(to: .fluidOunces).value.unitVolumeFormat()
+            cup = converter.converted(to: .cups).value.unitCupFormat()
+            tablespoon = converter.converted(to: .tablespoons).value.unitTablespoonFormat()
+            teaspoon = converter.converted(to: .teaspoons).value.unitTeaspoonFormat()
+            fluidOunce = converter.converted(to: .fluidOunces).value.unitFluidOunceFormat()
         case .fluidOunce:
             let converter = Measurement(value: volumeValue, unit: UnitVolume.fluidOunces)
-            cup = converter.converted(to: .cups).value.unitVolumeFormat()
-            tablespoon = converter.converted(to: .tablespoons).value.unitVolumeFormat()
-            teaspoon = converter.converted(to: .teaspoons).value.unitVolumeFormat()
-            fluidOunce = converter.converted(to: .fluidOunces).value.unitVolumeFormat()
+            cup = converter.converted(to: .cups).value.unitCupFormat()
+            tablespoon = converter.converted(to: .tablespoons).value.unitTablespoonFormat()
+            teaspoon = converter.converted(to: .teaspoons).value.unitTeaspoonFormat()
+            fluidOunce = converter.converted(to: .fluidOunces).value.unitFluidOunceFormat()
         }
     }
 }
