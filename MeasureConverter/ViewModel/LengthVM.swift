@@ -6,31 +6,52 @@
 //
 
 import Foundation
+import UIKit
 
 extension Double {
-    func unitInchFormat() -> String {
-        return String(format: "%.2F", self) + " in"
+    func unitInchFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " in"
+        let range = (mainString as NSString).range(of: " in")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+    
+        return mutableAttributedString
     }
     
-    func unitCentimeterFormat() -> String {
-        return String(format: "%.2F", self) + " cm"
+    func unitCentimeterFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " cm"
+        let range = (mainString as NSString).range(of: " cm")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitFootFormat() -> String {
-        return String(format: "%.2F", self) + " ft"
+    func unitFootFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " ft"
+        let range = (mainString as NSString).range(of: " ft")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitYardFormat() -> String {
-        return String(format: "%.2F", self) + " yd"
+    func unitYardFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " yd"
+        let range = (mainString as NSString).range(of: " yd")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
 }
 
 final class LengthVM {
     var lengthConversion: LengthType = .inch
-    var inch = ""
-    var centimeter = ""
-    var foot = ""
-    var yard = ""
+    var inch: NSMutableAttributedString = .init(string: "")
+    var centimeter: NSMutableAttributedString = .init(string: "")
+    var foot: NSMutableAttributedString = .init(string: "")
+    var yard: NSMutableAttributedString = .init(string: "")
     
     func refreshLengthData(from lengthValue: Double, from lengthType: LengthType) {
         switch lengthType {

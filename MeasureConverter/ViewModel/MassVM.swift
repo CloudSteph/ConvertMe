@@ -6,32 +6,53 @@
 //
 
 import Foundation
+import UIKit
 
 extension Double {
-    func unitKilogramFormat() -> String {
-        return String(format: "%.2F", self) + " kg"
+    func unitKilogramFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " kg"
+        let range = (mainString as NSString).range(of: " kg")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitGramFormat() -> String {
-        return String(format: "%.2F", self) + " g"
+    func unitGramFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " g"
+        let range = (mainString as NSString).range(of: " g")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitOunceFormat() -> String {
-        return String(format: "%.2F", self) + " oz"
+    func unitOunceFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " oz"
+        let range = (mainString as NSString).range(of: " oz")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitPoundFormat() -> String {
-        return String(format: "%.2F", self) + " lb"
+    func unitPoundFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " lb"
+        let range = (mainString as NSString).range(of: " lb")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
 }
 
 // MARK: Mass ViewModel
 final class MassVM {
     var massConversion: MassType = .kilogram
-    var kilogram = ""
-    var gram = ""
-    var ounce = ""
-    var pound = ""
+    var kilogram: NSMutableAttributedString = .init(string: "")
+    var gram: NSMutableAttributedString = .init(string: "")
+    var ounce: NSMutableAttributedString = .init(string: "")
+    var pound: NSMutableAttributedString = .init(string: "")
     
     func refreshMassData(from value: Double, from unitType: MassType) {
         switch unitType {

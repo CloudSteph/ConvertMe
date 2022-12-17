@@ -71,10 +71,10 @@ extension VolumeViewController {
 // MARK: Volume Helper Methods
 extension VolumeViewController {
     func updateVolumeLabels() {
-        cupLabel.text = volumeViewModel.cup
-        tablespoonLabel.text = volumeViewModel.tablespoon
-        teaspoonLabel.text = volumeViewModel.teaspoon
-        fluidOunceLabel.text = volumeViewModel.fluidOunce
+        cupLabel.attributedText = volumeViewModel.cup
+        tablespoonLabel.attributedText = volumeViewModel.tablespoon
+        teaspoonLabel.attributedText = volumeViewModel.teaspoon
+        fluidOunceLabel.attributedText = volumeViewModel.fluidOunce
     }
 }
 

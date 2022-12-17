@@ -72,10 +72,10 @@ extension LengthViewController {
 // MARK: - Length Helper Methods
 extension LengthViewController {
     func updateLengthLabels() {
-        inchLabel.text = lengthViewModel.inch
-        centimeterLabel.text = lengthViewModel.centimeter
-        feetLabel.text = lengthViewModel.foot
-        yardLabel.text = lengthViewModel.yard
+        inchLabel.attributedText = lengthViewModel.inch
+        centimeterLabel.attributedText = lengthViewModel.centimeter
+        feetLabel.attributedText = lengthViewModel.foot
+        yardLabel.attributedText = lengthViewModel.yard
     }
 }
 

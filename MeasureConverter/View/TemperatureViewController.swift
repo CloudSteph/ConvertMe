@@ -65,8 +65,8 @@ extension TemperatureViewController {
 // MARK: - Temp Helper Method
 extension TemperatureViewController {
     func updateTempLabels() {
-        celsiusLabel.text = tempViewModel.celsius
-        fahrenheitLabel.text = tempViewModel.fahrenheit
+        celsiusLabel.attributedText = tempViewModel.celsius
+        fahrenheitLabel.attributedText = tempViewModel.fahrenheit
     }
 }
 

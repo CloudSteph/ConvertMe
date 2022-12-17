@@ -6,21 +6,32 @@
 //
 
 import Foundation
+import UIKit
 
 extension Double {
-    func unitFarenheitFormat() -> String {
-        return String(format: "%.0F", self) + "°F"
+    func unitFarenheitFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.0F", self) + "°F"
+        let range = (mainString as NSString).range(of: "°F")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitCelsiusFormat() -> String {
-        return String(format: "%.0F", self) + "°C"
+    func unitCelsiusFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.0F", self) + "°C"
+        let range = (mainString as NSString).range(of: "°C")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
 }
 
 final class TemperatureVM {
     var tempConversion: TempType = .celsius
-    var celsius = ""
-    var fahrenheit = ""
+    var celsius: NSMutableAttributedString = .init(string: "")
+    var fahrenheit: NSMutableAttributedString = .init(string: "")
     
     func refreshTempData(from tempValue: Double, from tempType: TempType) {
         switch tempType {

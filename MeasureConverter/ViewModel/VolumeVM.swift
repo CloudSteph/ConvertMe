@@ -6,31 +6,52 @@
 //
 
 import Foundation
+import UIKit
 
 extension Double {
-    func unitCupFormat() -> String {
-        return String(format: "%.2F", self) + " cup"
+    func unitCupFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " cup"
+        let range = (mainString as NSString).range(of: " cup")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitTablespoonFormat() -> String {
-        return String(format: "%.2F", self) + " tbsp"
+    func unitTablespoonFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " tbsp"
+        let range = (mainString as NSString).range(of: " tbsp")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitTeaspoonFormat() -> String {
-        return String(format: "%.2F", self) + " tsp"
+    func unitTeaspoonFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " tsp"
+        let range = (mainString as NSString).range(of: " tsp")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
     
-    func unitFluidOunceFormat() -> String {
-        return String(format: "%.2F", self) + " fl oz"
+    func unitFluidOunceFormat() -> NSMutableAttributedString {
+        let mainString = String(format: "%.2F", self) + " fl oz"
+        let range = (mainString as NSString).range(of: " fl oz")
+        let mutableAttributedString = NSMutableAttributedString.init(string: mainString)
+        mutableAttributedString.addAttribute(NSAttributedString.Key.font, value: UIFont.boldSystemFont(ofSize: 20), range: range)
+        
+        return mutableAttributedString
     }
 }
 
 final class VolumeVM {
     var volumeConversion: VolumeType = .cup
-    var cup = ""
-    var tablespoon = ""
-    var teaspoon = ""
-    var fluidOunce = ""
+    var cup: NSMutableAttributedString = .init(string: "")
+    var tablespoon: NSMutableAttributedString = .init(string: "")
+    var teaspoon: NSMutableAttributedString = .init(string: "")
+    var fluidOunce: NSMutableAttributedString = .init(string: "")
     
     func refreshVolumeData(from volumeValue: Double, from volumeType: VolumeType) {
         switch volumeType {

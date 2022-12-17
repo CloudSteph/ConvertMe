@@ -51,10 +51,10 @@ extension MassViewController {
 // Mark: - Update Labels
 extension MassViewController {
     func updateMassLabels() {
-        kilogramLabel.text = massViewModel.kilogram
-        gramLabel.text = massViewModel.gram
-        ounceLabel.text = massViewModel.ounce
-        poundLabel.text = massViewModel.pound
+        kilogramLabel.attributedText = massViewModel.kilogram
+        gramLabel.attributedText = massViewModel.gram
+        ounceLabel.attributedText = massViewModel.ounce
+        poundLabel.attributedText = massViewModel.pound
     }
 }
 
